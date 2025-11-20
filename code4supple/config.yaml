@@ -1,0 +1,38 @@
+experiment_name: CRL-SEI_repro
+seed: 42
+seeds: [42, 2025, 1234]
+dataset:
+  adsb:
+    metadata_csv: data/adsb/metadata.csv
+    protocol: ADSB
+  wifi:
+    metadata_csv: data/wifi/metadata.csv
+    protocol: WiFi
+splits:
+  train_frac: 0.7
+  val_frac: 0.15
+  test_frac: 0.15
+model:
+  backbone: resnet18
+  output_dim: 512
+  pretrained: false
+nit:
+  sigma1: 0.1
+  sigma2: 0.5
+  num_ctrl_pts: 5
+  amp_min: 0.8
+  amp_max: 1.25
+arr:
+  K: 256
+  tau: 0.5
+  delta: 0.5
+  gamma: 1.0
+weibull:
+  tail_size: 20
+  quantile: 0.95
+training:
+  batch_size: 128
+  lr: 0.001
+  weight_decay: 1e-4
+  epochs: 200
+  optimizer: adam
